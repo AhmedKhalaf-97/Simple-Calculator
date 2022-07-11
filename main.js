@@ -15,22 +15,25 @@ let isAdding = false;
 let isSubtracting = false;
 let isMultiplying = false;
 let isDividing = false;
+let isComputing = false;
 
-document.getElementById("log_btn").addEventListener("click", () => {
-    LogStatus();
-});
+// document.getElementById("log_btn").addEventListener("click", () => {
+//     LogStatus();
+// });
 
-function LogStatus() {
-    console.log(`previousOperand = ${previousOperand}`);
-    console.log(`currentOperand = ${currentOperand}`);
-    console.log(`enteredNumber = ${enteredNumber}`);
-    console.log(`result = ${result}`);
-    console.log(`isAdding = ${isAdding}`);
-    console.log(`isSubtracting = ${isSubtracting}`);
-    console.log(`isMultiplying = ${isMultiplying}`);
-    console.log(`isDividing = ${isDividing}`);
-    console.log('____________________________________________');
-}
+// function LogStatus() {
+//     console.log(`previousOperand = ${previousOperand}`);
+//     console.log(`currentOperand = ${currentOperand}`);
+//     console.log(`enteredNumber = ${enteredNumber}`);
+//     console.log(`result = ${result}`);
+//     console.log(`isAdding = ${isAdding}`);
+//     console.log(`isSubtracting = ${isSubtracting}`);
+//     console.log(`isMultiplying = ${isMultiplying}`);
+//     console.log(`isDividing = ${isDividing}`);
+//     console.log('____________________________________________');
+// }
+
+UpdateDisplay();
 
 delete_btn.addEventListener("click", () => {
     DeleteLastNumber();
@@ -44,12 +47,21 @@ clear_btn.addEventListener("click", () => {
 
 number_btns.forEach((numberButton) => {
     numberButton.addEventListener("click", () => {
+        if(!isComputing)
+        {
+            enteredNumber = '';
+            isComputing = true;
+        }
+
         if(enteredNumber.length < 16)
+        {
             AppendNumber(numberButton.innerHTML);
+        }
     });
 });
 
 negative_sign_btn.addEventListener("click", () => {
+
     if(enteredNumber.charAt(0) === '-')
         return;
 
@@ -65,6 +77,7 @@ operator_btns.forEach((operator) => {
 
 equals_btn.addEventListener("click", () => {
     Compute();
+    isComputing = false;
 });
 
 function AppendNumber(num) {
@@ -159,7 +172,7 @@ function Compute() {
     
 
     previousOperand = result;
-    enteredNumber = result;
+    enteredNumber = String(result);
     currentOperand = '';
 
     DeselectOtherOperators();

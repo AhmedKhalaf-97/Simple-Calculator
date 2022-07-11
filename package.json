@@ -1,0 +1,24 @@
+{
+  "name": "simple-calculator",
+  "version": "1.0.0",
+  "description": "Simple Calculator",
+  "main": "main.js",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedKhalaf-97/Simple-Calculator.git"
+  },
+  "keywords": [],
+  "author": "Ahmed Khalaf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedKhalaf-97/Simple-Calculator/issues"
+  },
+  "homepage": "https://github.com/AhmedKhalaf-97/Simple-Calculator#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
